@@ -4,6 +4,8 @@
  */
 package modulo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Melissa Acuña C10057
@@ -11,6 +13,7 @@ package modulo;
 
 /*Producto: Representar un producto del inventario. Atributos, constructores, get y set.*/
 public class Producto {
+
     //Atributos del objeto
     private int codigo;
     private String nombre;
@@ -60,6 +63,26 @@ public class Producto {
     public void setCantidadDisponible(int cantidadDisponible) {
         this.cantidadDisponible = cantidadDisponible;
     }
-    
-    
+    public void ventaProducto (int venta) {
+        cantidadDisponible = cantidadDisponible - venta;
+        double compra = venta * precio;
+        JOptionPane.showMessageDialog(null, "Usted ha vendido exitosamente "+venta+" unidades del producto "+nombre+"."
+                + "\nEl total de su compra es de: "+compra);
+    }
+    public void reabastecimiento (int masCant) {
+        cantidadDisponible = cantidadDisponible + masCant;
+        JOptionPane.showMessageDialog(null,"Usted ha reabastecido este producto exitosamente.");
+    }
+    public double valorTotal () {
+        double total = 0.0;
+        return total = cantidadDisponible * precio;
+    }
+
+    public void infoProducto() {
+        JOptionPane.showMessageDialog(null, "Producto: " + nombre
+                + "\nCodigo: "+codigo
+                + "\nPrecio: "+precio
+                + "\nCantidad disponible: "+cantidadDisponible);
+    }
+
 }
