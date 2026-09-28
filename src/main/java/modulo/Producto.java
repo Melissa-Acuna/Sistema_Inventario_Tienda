@@ -67,7 +67,7 @@ public class Producto {
         cantidadDisponible = cantidadDisponible - venta;
         double compra = venta * precio;
         JOptionPane.showMessageDialog(null, "Usted ha vendido exitosamente "+venta+" unidades del producto "+nombre+"."
-                + "\nEl total de su compra es de: "+compra);
+                + "\nEl total de su compra es de: "+String.format("%.2f%n", compra));
     }
     public void reabastecimiento (int masCant) {
         cantidadDisponible = cantidadDisponible + masCant;

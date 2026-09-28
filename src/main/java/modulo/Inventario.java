@@ -16,7 +16,7 @@ Arreglo de 10 posiciones y variable cantidad.*/
 public class Inventario {
 
     //Arreglo tipo objeto para crear referencias del objeto Producto.
-    private Producto[] producto = new Producto[3];
+    private Producto[] producto = new Producto[10];
     private int cantidad = 0;
 
     public void registrarProducto() {
@@ -31,7 +31,6 @@ public class Inventario {
             //guardar en el arreglo la informacion ingresada
             producto[i] = new Producto(codigo, nombre, precio, cantidadDisponible);
 
-            //incrementa el contador de estudiantes y notas
             cantidad++;
         }//cierre ciclo for
 
@@ -57,7 +56,7 @@ public class Inventario {
             }//fin if
 
         }//fin del ciclo for
-        JOptionPane.showMessageDialog(null, "El producto " + codigoBusqueda + " esta en el indice: " + indice);
+        JOptionPane.showMessageDialog(null, "El producto código " + codigoBusqueda + " es "+ producto [indice].getNombre()+" y esta en el indice: " + indice);
 
     }//Fin metodo de busqueda
 
@@ -84,7 +83,11 @@ public class Inventario {
         for (int i = 0; i < producto.length; i++) {
             if (producto[i] != null && producto[i].getCodigo() == codigoBusqueda) {
                 int nuevaCantidadDisponible = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea agregar al producto " + producto[i].getNombre() + " : "));
-                producto[i].reabastecimiento(nuevaCantidadDisponible);
+                if (nuevaCantidadDisponible <= 0) {
+                    JOptionPane.showMessageDialog(null, "El valor ingresado no puede ser procesado. Intente nuevamente");
+                } else {
+                    producto[i].reabastecimiento(nuevaCantidadDisponible);
+                }
                 break;
             }//fin if
 
@@ -100,6 +103,6 @@ public class Inventario {
                 totalInventario += totalXProducto;
             }//fin if
         }//fin ciclo for
-        JOptionPane.showMessageDialog(null, "El valor total de todo el inventario disponible es de: " + totalInventario);
+        JOptionPane.showMessageDialog(null, "El valor total de todo el inventario disponible es de: " + String.format("%.2f%n", totalInventario));
     }//Fin metodo de calculo totalitario
 }//Fin de la clase Inventario.
